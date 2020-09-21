@@ -31,5 +31,20 @@ module AltDemo
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.time_zone = 'Asia/Bangkok'
+    config.active_record.default_timezone = :utc
+
+    config.encoding = 'utf-8'    
+  end
+end
+
+module MyI8n
+  LOCALES = %w[vi en].freeze
+
+  class Application < Rails::Application
+    config.i18n.available_locales = MyI8n::LOCALES
+    config.i18n.locale = :vi
+    config.i18n.default_locale = :vi
   end
 end

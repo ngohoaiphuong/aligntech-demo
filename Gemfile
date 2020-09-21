@@ -48,3 +48,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # ----------------------------------------------------
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'i18n-js'
+gem 'devise'
+gem 'slim-rails'

@@ -5,6 +5,7 @@ en:
     cancel: Cancel
     yes: Yes
     no: No
+    logout: Do you really want to logout?
 
 vi:
   confirm:
@@ -13,3 +14,4 @@ vi:
     cancel: Không
     yes: Đồng ý
     no: Từ chối
+    logout:  Bạn có chắc muốn đăng xuất?

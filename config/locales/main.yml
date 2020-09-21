@@ -1,5 +1,31 @@
 en:
-  hello: "Hello world"
+  hello: "Hi, %{user}"
+  title:
+    login: login
+    register: regiter
+    backlog: backlog
+  form:
+    placeholder:
+      username: Username
+      password: Password
+      password_confirmation: Password
+    buttons:
+      register: register
+      login: login
+      logout: logout
 
 vi:
-  hello: "Xin chào"
+  hello: "Xin chào, %{user}"
+  title:
+    login: đăng nhập
+    register: đăng ký
+    backlog: backlog
+  form:
+    placeholder:
+      username: Username
+      password: Mật khẩu
+      password_confirmation: Nhập Lại Mật khẩu
+    buttons:
+      register: đăng ký
+      login: đăng nhập
+      logout: đăng xuất

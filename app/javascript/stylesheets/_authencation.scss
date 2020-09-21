@@ -1,0 +1,9 @@
+.authencation {
+  width: $loginWidth;
+  height: $loginHeight;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: calc(-#{$loginWidth}/2);
+  margin-top: calc(-#{$loginHeight}/2);
+}

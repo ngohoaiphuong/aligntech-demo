@@ -1,0 +1,17 @@
+
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  .navbar-brand.text-capitalize
+    = t('title.backlog')
+  button.navbar-toggler[type="button" data-toggle="collapse" data-target="#navbarBacklog" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"]
+    span.navbar-toggler-icon
+    
+  .collapse.navbar-collapse#navbarBacklog
+    .mr-auto
+    .form-inline
+      ul.navbar-nav.mr-auto
+        li.nav-item
+          .nav-link.text-capitalize
+            = t('hello', { user: username })
+        li.nav-item
+          = link_to destroy_user_session_path, method: :delete, data: { confirm: t('confirm.logout') }, class: 'btn btn-secondary text-capitalize'
+            = t('form.buttons.logout')

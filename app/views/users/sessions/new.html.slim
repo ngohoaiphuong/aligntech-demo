@@ -1,0 +1,26 @@
+.authencation
+  .card
+    .card-header.text-capitalize
+      = t('title.login')
+    .card-body
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          .input-group.mb-3
+            .input-group-prepend
+              span.input-group-text#usernameIcon
+                i.fas.fa-user
+            = f.text_field :username, placeholder: t('form.placeholder.username'), class: 'form-control'
+        .field
+          .input-group.mb-3
+            .input-group-prepend
+              span.input-group-text#usernamePass
+                i.fas.fa-asterisk
+            = f.password_field :password, placeholder: t('form.placeholder.password'), class: 'form-control'
+
+        .actions
+          .d-flex
+            .flex-fill
+              = link_to new_user_registration_path, class: 'btn btn-secondary text-capitalize' do
+                = t('form.buttons.register')
+            .flex-fill
+              = f.submit t('form.buttons.login'), class: 'float-right text-capitalize btn btn-secondary'

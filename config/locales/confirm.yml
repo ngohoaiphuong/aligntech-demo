@@ -1,0 +1,15 @@
+en:
+  confirm:
+    confirmation_title: Please Confirm
+    ok: Ok
+    cancel: Cancel
+    yes: Yes
+    no: No
+
+vi:
+  confirm:
+    confirmation_title: Xin xác nhận
+    ok: Có
+    cancel: Không
+    yes: Đồng ý
+    no: Từ chối

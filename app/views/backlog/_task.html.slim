@@ -1,0 +1,18 @@
+div[id="task-#{task.id}"]
+  .d-flex.border-bottom.p-3.text-capitalize
+    .flex-fill.flex6
+      = task.description
+      span.btn.btn-sm.ml-1.w100.disabled[aria-hidden="true" class=status_color(task)]
+        = task.status
+    .flex-fill.flex35
+      span.btn.btn-sm.ml-1.w100.disabled[aria-hidden="true" class=priority_color(task)]
+        = priority_text(task)
+      span.btn.btn-sm.ml-1.w100.disabled[aria-hidden="true" class=priority_color(task, false)]
+        = priority_text(task, false)
+    .flex-fill.flex15
+      - if !task.closed?
+        span.btn.btn-sm.w100[aria-hidden="true" class=btn_color(task)]
+          = action_text(task)
+      button.close[type="button" aria-label="Close"]
+        span[aria-hidden="true"] &times;
+      

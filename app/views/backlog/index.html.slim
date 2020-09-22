@@ -1,0 +1,15 @@
+.tasks.mt-5
+  .container
+    .card
+      .card-header.text-capitalize.bg-377fcc
+        .d-flex
+          .flex-fill.text-white
+            = t('tasks.title')
+          .flex-fill
+            .form-check.float-right.text-white
+              input.form-check-input#show_closed_tasks[type='checkbox' value='']
+              label.form-check-label[for='show_closed_tasks']
+                = t('tasks.show_closed_tasks')
+      .card-body.p-0
+        #tasks
+          =  render partial: 'backlog/tasks', locals: { tasks: @tasks }

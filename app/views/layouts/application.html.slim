@@ -12,7 +12,7 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application'
   body
-    = render 'layouts/alert'
+    = render 'layouts/alert/index'
     .container-fluid
       - if user_signed_in?
         = render partial: 'layouts/navbar', locals: { username: current_user.username }

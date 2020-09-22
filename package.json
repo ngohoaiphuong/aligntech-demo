@@ -10,6 +10,7 @@
     "i18n-js": "^3.7.1",
     "izitoast": "^1.4.0",
     "jquery": "^3.5.1",
+    "js-cookie": "^2.2.1",
     "popper.js": "^1.16.1",
     "rails-erb-loader": "^5.5.2",
     "rails-ujs-confirm": "^6.0.3",

@@ -1,7 +1,8 @@
 import Cookies from 'js-cookie'
 
-const channelId = Math.random()
 export const getChannelId = function() {
+  let channelId = Math.random()
+  Cookies.set('channelID', channelId)
   return channelId
 }
 

@@ -17,7 +17,6 @@ window.notice = new NoticeMessage()
 
 $(document).on('turbolinks:load', function () {
   $.sweetAlertConfirm.init(I18n.t('confirm.confirmation_title'))
-  console.log('Rendering')
   SystemListenChannel.get()
 })
 

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  include ErrorMessageHelper
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -10,9 +11,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    ActiveRecord::Base.transaction do
+      user_param = user_params
+
+      if !User.by_user(user_param[:username]).empty?
+        return show_error_message('#error-description', t('errors.username.exists', { username: user_param[:username] }), '.auth-btn')
+      end
+
+      user = User.new(user_param)
+      if !user.valid?
+        return show_error_message('#error-description', messages(user.errors.messages.flatten), '.auth-btn')
+      end
+
+      if user_param[:password] != user_param[:password_confirmation]
+        return show_error_message('#error-description', t('errors.password.incorrect'), '.auth-btn')
+      end
+
+      user.save
+      resource = User.find_for_database_authentication(username: user_param[:username])
+      sign_in(resource_name, resource)
+      yield resource if block_given?
+      respond_with resource, location: after_sign_in_path_for(resource)
+    end
+  end
 
   # GET /resource/edit
   # def edit
@@ -59,4 +81,18 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  private
+  def user_params
+    params.require(:user).permit(
+      :username,
+      :password,
+      :password_confirmation
+    )
+  end
+
+  def messages(errors)
+    errors_ = []
+    Hash[*errors].each{|k,v| errors_.push("#{k.to_s.titlecase}: #{v.join(',')}")}
+    errors_.join('</br>')
+  end
 end

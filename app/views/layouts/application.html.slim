@@ -5,12 +5,14 @@ html
       | AlginTech Backlog
     = csrf_meta_tags
     = csp_meta_tag
+    = action_cable_meta_tag
     link[rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"]
     
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application'
   body
+    = render 'layouts/alert/index'
     .container-fluid
       - if user_signed_in?
         = render partial: 'layouts/navbar', locals: { username: current_user.username }

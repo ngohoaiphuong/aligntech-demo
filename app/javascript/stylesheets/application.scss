@@ -1,4 +1,5 @@
 @import 'bootstrap/scss/bootstrap';
+@import 'izitoast/dist/css/iziToast.css';
 
 @import './variables';
 @import './authencation';
@@ -9,4 +10,23 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+.alert-modal {
+  position: absolute;
+  z-index: 1000;
+  right: 10px;
+  top: 10px;  
+}
+
+.text-proper {
+  text-transform: lowercase;
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.h19 {
+  min-height: 19px;
+  height: auto;
 }

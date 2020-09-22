@@ -13,6 +13,13 @@ en:
       register: register
       login: login
       logout: logout
+  errors:
+    password:
+      invalid: 'Length should be %{min}-%{max} characters and include: 1 uppercase, 1 lowercase, 1 number'
+      incorrect: Password not match
+    username: 
+      invalid: 'Length should be %{min}-%{max} characters and not contains any special characters'
+      exists: 'Username <strong>%{username}</strong> already exists'
 
 vi:
   hello: "Xin chào, %{user}"
@@ -29,3 +36,10 @@ vi:
       register: đăng ký
       login: đăng nhập
       logout: đăng xuất
+  errors:
+    password:
+      invalid: 'Chiều dài phải từ %{min}-%{max} ký tự và bao gồm: 1 chữ hoa, 1 chữ thường, 1 chữ số'
+      incorrect: Mật khẩu không chính xác
+    username:
+      invalid: 'Chiều dài phải từ %{min}-%{max} ký tự và không bao gồm bất kỳ ký tự đặc biệt'
+      exists: 'User <strong>%{username}</strong> đã đăng ký'

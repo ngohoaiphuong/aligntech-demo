@@ -22,6 +22,4 @@ $(document).on('turbolinks:load', function () {
 })
 
 $(document).on('turbolinks:render', function () {
-  console.log('Rendering')
-  SystemListenChannel.get()
 })

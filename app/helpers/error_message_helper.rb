@@ -5,7 +5,7 @@ module ErrorMessageHelper
     cable_ready[channel].inner_html(
       selector: element,
       position: 'afterbegin',
-      html: render_to_string(partial: 'shared/error', locals: { description: message })
+      html: render_to_string(partial: 'shared/error', locals: { description: message.html_safe })
     )
     if remove_diable_element.present?
       cable_ready[channel].remove_attribute(

@@ -17,11 +17,13 @@
                 i.fas.fa-asterisk
             = f.password_field :password, placeholder: t('form.placeholder.password'), class: 'form-control'
         .field
-          .input-group.mb-3
+          .input-group
             .input-group-prepend
               span.input-group-text#usernamePass
                 i.fas.fa-asterisk
             = f.password_field :password_confirmation, placeholder: t('form.placeholder.password_confirmation'), class: 'form-control'
+          small.form-text.text-danger.mb-3
+            #error-description.h19
 
         .actions
           .d-flex
@@ -29,4 +31,4 @@
               = link_to new_user_session_path, class: 'btn btn-secondary text-capitalize' do
                 = t('form.buttons.login')
             .flex-fill
-              = f.submit t('form.buttons.register'), class: 'float-right text-capitalize btn btn-secondary'
+              = f.submit t('form.buttons.register'), class: 'auth-btn float-right text-capitalize btn btn-secondary'

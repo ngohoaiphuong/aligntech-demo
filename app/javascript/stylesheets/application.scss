@@ -18,3 +18,14 @@ body {
   right: 10px;
   top: 10px;  
 }
+
+.text-proper {
+  text-transform: lowercase;
+  &:first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.h19 {
+  height: 19px;
+}

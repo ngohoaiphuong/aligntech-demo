@@ -38,4 +38,3 @@ const SystemListenChannel = (function() {
 export {
   SystemListenChannel
 }
-

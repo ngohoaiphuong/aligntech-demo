@@ -12,4 +12,5 @@
                 = t('tasks.show_closed_tasks')
       .card-body.p-0
         #tasks
-          =  render partial: 'backlog/tasks', locals: { tasks: @tasks }
+          =  render partial: 'tasks/tasks', locals: { tasks: @tasks }
+        #task-name

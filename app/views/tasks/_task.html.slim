@@ -1,0 +1,21 @@
+div[id="task_#{task.id}" data-clannel-name=channel_name data-session-id=session_name]
+  .d-flex.border-bottom.p-3.text-capitalize
+    .flex-fill.flex6
+      = task.description
+      span.btn.btn-sm.ml-1.w100.disabled[aria-hidden="true" class=status_color(task)]
+        = status_text(task)
+    .flex-fill.flex35
+      span.btn.btn-sm.ml-1.w100.disabled[aria-hidden="true" class=priority_color(task)]
+        = priority_text(task)
+      span.btn.btn-sm.ml-1.w100.disabled[aria-hidden="true" class=priority_color(task, false)]
+        = priority_text(task, false)
+    .flex-fill.flex15
+      - if task.process?
+        a.btn.btn-sm.w100[aria-hidden="true" class=btn_color(task) href='javascript:void(0)' data={ reflex: 'click->TasksReflex#done', id: task.id, c: channel_name }]
+          = action_text(task)
+      - if task.openning?
+        a.btn.btn-sm.w100[aria-hidden="true" class=btn_color(task) href='javascript:void(0)' data={ reflex: 'click->TasksReflex#start', id: task.id, c: channel_name }]
+          = action_text(task)
+      button.close[type="button" aria-label="Close" method=:delete data={ confirm: t('confirm.logout')}]
+        span[aria-hidden="true"] &times;
+      

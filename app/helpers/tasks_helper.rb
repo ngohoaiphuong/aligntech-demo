@@ -1,7 +1,7 @@
-module BacklogHelper
+module TasksHelper
   def status_color(task)
     {
-      open: 'btn-info',
+      openning: 'btn-info',
       process: 'btn-success', 
       closed: 'btn-secondary'
     }[task.status.to_sym]
@@ -23,12 +23,17 @@ module BacklogHelper
   end
 
   def action_text(task)
-    return t('form.buttons.start') if task.open?
+    return t('form.buttons.start') if task.openning?
     t('form.buttons.done')
   end
 
+  def status_text(task)
+    return 'open' if task.openning?
+    task.status
+  end
+
   def btn_color(task)
-    return 'btn-outline-secondary' if task.open?
+    return 'btn-outline-secondary' if task.openning?
     'btn-primary'
   end
 end

@@ -11,18 +11,12 @@ div[id=dom_id(task)]
         = priority_text(task, false)
     .flex-fill.flex15
       - if task.process?
-        / a.btn.btn-sm.w100[aria-hidden="true" class=btn_color(task) href='javascript:void(0)' data={ reflex: 'click->TasksReflex#done_task', id: task.id }]
-        /   = action_text(task)
         = link_to task_done_path(task), class: "btn btn-sm w100 #{btn_color(task)}", aria: { hidden: "true" }, data: { confirm: t('confirm.done') } do
           = action_text(task)
-        / a.btn.btn-sm.w100[aria-hidden="true" class=btn_color(task) href='javascript:void(0)' data={ reflex: 'click->TasksReflex#done_task', id: task.id }]
-        /   = action_text(task)
       - if task.openning?
-        a.btn.btn-sm.w100[aria-hidden="true" class=btn_color(task) href='javascript:void(0)' data={ reflex: 'click->TasksReflex#start_task', id: task.id }]
+        = link_to task_start_path(task), class: "btn btn-sm w100 #{btn_color(task)}", aria: { hidden: "true" }, data: { confirm: t('confirm.start') } do
           = action_text(task)
 
       = link_to task_path(task), class: "close", method: :delete, type: :button, aria: { label: "Close" }, data: { confirm: t('confirm.delete_task') } do
         span[aria-hidden="true"] &times;
-      / button.close[type="button" aria-label="Close" method=:delete data={ confirm: t('confirm.delete_task')}]
-      /   span[aria-hidden="true"] &times;
       

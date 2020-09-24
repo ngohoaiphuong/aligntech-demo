@@ -3,24 +3,24 @@ class TasksController < ApplicationController
   include CableReady::Broadcaster
   include ApplicationHelper
   def index
-    p hide_task_closed
     @tasks = hide_task_closed ? current_user.tasks.not_closed : current_user.tasks
-    p @tasks.size
   end
 
   def done
-    p params
+    task = current_user.tasks.find(params[:task_id])
+    task.closed!
+    redirect_to root_path
   end
 
   def start
-
+    task = current_user.tasks.find(params[:task_id])
+    task.process!
+    redirect_to root_path
   end
 
   def destroy
-
-  end
-
-  def hide_closed_task
-    p params
+    task = current_user.tasks.find(params[:id])
+    task.destroy
+    redirect_to root_path
   end
 end

@@ -25,6 +25,7 @@ en:
   tasks:
     title: tasks
     show_closed_tasks: show closed tasks
+    empty: Currently you doesn't any task with status <strong>Open</strong> or <strong>Process</strong>
 
 vi:
   hello: "Xin chào, %{user}"
@@ -53,3 +54,4 @@ vi:
   tasks:
     title: công việc
     show_closed_tasks: hiện công việc đã xong
+    empty: Hiện tại bạn không có bất công việc có trạng thái <strong>Open</strong> or <strong>Process</strong>

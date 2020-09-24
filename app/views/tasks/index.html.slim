@@ -8,8 +8,6 @@
           .flex-fill
             .form-check.float-right.text-white#show-hide-tasks
               = render partial: 'tasks/task_option', locals: { checked: !hide_task_closed }
-              / = check_box_tag t('tasks.show_closed_tasks'), '1', !hide_task_closed, class: 'form-check-input', data: { reflex: 'click->TasksReflex#show_hide_task' }
-              / = label_tag t('tasks.show_closed_tasks'), t('tasks.show_closed_tasks'), class: 'form-check-label', value: '0'
       .card-body.p-0
         #tasks
           =  render partial: 'tasks/tasks', locals: { tasks: @tasks }

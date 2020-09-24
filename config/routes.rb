@@ -8,8 +8,5 @@ Rails.application.routes.draw do
   resources :tasks, only: [:destroy] do 
     get :done
     get :start
-    collection do
-      put :hide_closed_task
-    end
   end
 end

@@ -10,7 +10,7 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light
     .form-inline
       ul.navbar-nav.mr-auto
         li.nav-item
-          .nav-link.text-capitalize
+          .nav-link.text-capitalize#demo
             = t('hello', { user: username })
         li.nav-item
           = link_to destroy_user_session_path, method: :delete, data: { confirm: t('confirm.logout') }, class: 'btn btn-secondary text-capitalize'

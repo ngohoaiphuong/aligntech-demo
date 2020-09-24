@@ -5,18 +5,24 @@ import {
 } from 'shared/utils'
 
 import CableReady from 'cable_ready';
+// import consumer from "./consumer"
+
+// consumer.subscriptions.create({
+//   channel: 'SystemListenChannel',
+//   channel_id: getChannelId(),
+//   session: getUuid()
+// }, {
+//   received(data) {
+//     if(data.cableReady) CableReady.perform(data.operations)
+//   }
+// });
 
 function registerSystemListenChannel() {
-  const channelName = 'SystemListenChannel'
-  const channelId   = getChannelId()
-  const session     = getUuid()
-
-  return createChannel({
-    channel: channelName,
-    channel_id: channelId,
-    session: session
-  }, {
+  return createChannel('SystemListenChannel', {
     received(data) {
+      console.log('SystemListenChannel')
+      console.log(data)
+      console.log('----------------------------------')
       if(data.cableReady) CableReady.perform(data.operations)
     }
   })

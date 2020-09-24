@@ -1,0 +1,17 @@
+.tasks.mt-5[data-controller='tasks']
+  .container
+    .card.mb-3
+      .card-header.text-capitalize.bg-377fcc
+        .d-flex
+          .flex-fill.text-white
+            = t('tasks.title')
+          .flex-fill
+            .form-check.float-right.text-white#show-hide-tasks
+              = render partial: 'tasks/task_option', locals: { checked: !hide_task_closed }
+      .card-body.p-0.h300.enable-scroll
+        #tasks
+          =  render partial: 'tasks/tasks', locals: { tasks: @tasks }
+    .card 
+      .card-body.p-0
+        #new-task
+          =  render 'tasks/new_task'

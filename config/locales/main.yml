@@ -3,7 +3,7 @@ en:
   title:
     login: login
     register: regiter
-    backlog: backlog
+    backlog: backlogs
   form:
     placeholder:
       username: Username
@@ -13,6 +13,8 @@ en:
       register: register
       login: login
       logout: logout
+      start: start
+      done: done
   errors:
     password:
       invalid: 'Length should be %{min}-%{max} characters and include: 1 uppercase, 1 lowercase, 1 number'
@@ -20,13 +22,32 @@ en:
     username: 
       invalid: 'Length should be %{min}-%{max} characters and not contains any special characters'
       exists: 'Username <strong>%{username}</strong> already exists'
+    description:
+      blank: can't be blank
+      max_length: is too long (maximum is %{count} characters)
+  tasks:
+    title: tasks
+    show_closed_tasks: show closed tasks
+    empty: Currently you doesn't any task with status <strong>Open</strong> or <strong>Process</strong>
+    important: important task
+    urgent: urgent task
+    add:
+      title: Add your task
+      description: maximum 40 characters
+      button: add
+    alert:
+      done: You doned task <strong>%{task}</strong>
+      start: You started new task <strong>%{task}</strong>
+      close: You closed task <strong>%{task}</strong>
+      delete: You deleted task <strong>%{task}</strong>
+      add: You added new task <strong>%{task}</strong>
 
 vi:
   hello: "Xin chào, %{user}"
   title:
     login: đăng nhập
     register: đăng ký
-    backlog: backlog
+    backlog: backlogs
   form:
     placeholder:
       username: Username
@@ -36,6 +57,8 @@ vi:
       register: đăng ký
       login: đăng nhập
       logout: đăng xuất
+      start: bắt đầu
+      done: hoàn thành
   errors:
     password:
       invalid: 'Chiều dài phải từ %{min}-%{max} ký tự và bao gồm: 1 chữ hoa, 1 chữ thường, 1 chữ số'
@@ -43,3 +66,22 @@ vi:
     username:
       invalid: 'Chiều dài phải từ %{min}-%{max} ký tự và không bao gồm bất kỳ ký tự đặc biệt'
       exists: 'User <strong>%{username}</strong> đã đăng ký'
+    description:
+      blank: khônng được để trống
+      max_length: quá dài (tối đa %{count} ký tự)
+  tasks:
+    title: công việc
+    show_closed_tasks: hiện công việc đã xong
+    empty: Hiện tại bạn không có bất công việc có trạng thái <strong>Open</strong> or <strong>Process</strong>
+    important: công việc quan trọng
+    urgent: công việc khẩn
+    add:
+      title: Thêm công việc của bạn
+      description: tối đa 40 ký tự
+      button: thêm công việc
+    alert:
+      done: Bạn đã hoàn thành công việc <strong>%{task}</strong>
+      start: Bạn đã bắt đầu làm công việc <strong>%{task}</strong>
+      close: Bạn đã hoàn tất công việc <strong>%{task}</strong>
+      delete: Bạn đã xoá công việc <strong>%{task}</strong>
+      add: Bạn đã thêm công việc <strong>%{task}</strong>

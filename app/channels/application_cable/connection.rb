@@ -1,25 +1,25 @@
 module ApplicationCable
   class Connection < ActionCable::Connection::Base
-    identified_by :session_id
+    identified_by :current_user, :current_uuid
 
     def connect
-      self.session_id  = cookies[:uuid]
+      self.current_user = find_verified_user
+      self.current_uuid = cookies[:uuid]
     end
 
-    # identified_by :current_user
+    protected
 
-    # def connect
-    #   self.current_user = find_verified_user
-    # end
-
-    # protected
-
-    # def find_verified_user
-    #   if (current_user = env["warden"].user)
-    #     current_user
-    #   else
-    #     reject_unauthorized_connection
-    #   end
-    # end    
+    def find_verified_user
+      if (current_user = env["warden"].user)
+        current_user
+      # else
+      #   p "2.Cookies"
+      #   cookies[:uuid]
+      #   # OpenStruct.new({
+      #   #   id: cookies[:uuid]
+      #   # })
+      #   # reject_unauthorized_connection
+      end
+    end    
   end
 end

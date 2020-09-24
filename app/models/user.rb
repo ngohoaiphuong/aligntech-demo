@@ -5,6 +5,7 @@ class User < ApplicationRecord
   validate :username_complexity, :password_complexity
 
   scope :by_user, -> (username) { where('lower(username) = ?', username.downcase)}
+  has_many :tasks, dependent: :destroy
 
   class << self
     def find_for_database_authentication(warden_conditions)

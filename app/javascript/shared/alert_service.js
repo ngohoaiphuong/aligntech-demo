@@ -31,7 +31,26 @@ function alertError(message) {
   }
 }
 
+function hideAlert() {
+  setInterval(
+    () => {
+      if($('#alert')) {
+        setTimeout(
+          () => {
+            $('#alert').fadeTo(500, 0).slideUp(
+              500, () => {
+                $(this).remove()
+              }
+            )
+          }, 4000
+        )
+      }
+    }, 5000
+  )
+}
+
 export {
   alertWarning,
-  alertError
+  alertError,
+  hideAlert
 }

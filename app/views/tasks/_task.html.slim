@@ -1,0 +1,22 @@
+div[id="task-#{task.id}"]
+  .d-flex.border-bottom.p-3.text-capitalize
+    .flex-fill.flex6
+      = task.description
+      span.btn.btn-sm.ml-1.w100.disabled[aria-hidden="true" class=status_color(task)]
+        = status_text(task)
+    .flex-fill.flex35
+      span.btn.btn-sm.ml-1.w100.disabled[aria-hidden="true" class=priority_color(task)]
+        = priority_text(task)
+      span.btn.btn-sm.ml-1.w100.disabled[aria-hidden="true" class=priority_color(task, false)]
+        = priority_text(task, false)
+    .flex-fill.flex15
+      - if task.process?
+        = link_to 'javascript:void(0)', class: "btn btn-sm w100 #{btn_color(task)}", aria: { hidden: "true" }, data: { action: 'click->tasks#done', id: task.id } do
+          = action_text(task)
+      - if task.openning?
+        = link_to 'javascript:void(0)', class: "btn btn-sm w100 #{btn_color(task)}", aria: { hidden: "true" }, data: { action: 'click->tasks#start', id: task.id } do
+          = action_text(task)
+
+      = link_to 'javascript:void(0)', class: "close", type: :button, aria: { label: "Close" }, data: { action: 'click->tasks#remove', id: task.id } do
+        span[aria-hidden="true"] &times;
+      

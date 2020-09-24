@@ -1,4 +1,12 @@
-.alert.alert-dismissible[role="alert" class=mode]
+.alert.alert-dismissible#alert[role="alert" class=mode]
   = message
   button.close[type="button" data-dismiss="alert" aria-label="Close"]
     span[aria-hidden="true"] &times;
+
+javascript:
+  console.log('Hello')
+  setTimeout(
+    function () { 
+      $('#alert').alert('close'); 
+    }, 5000
+  ); 

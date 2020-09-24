@@ -23,8 +23,10 @@ Things you may want to cover:
 			  DB_USER=<database username>
 			  DB_PASS=<database password>
       
-  * Create database on postgreSQL database
+	* Create database on postgreSQL database
+	  
 			rails  db:create
       
 	* Run migrate
+	
 			rails db:migrate

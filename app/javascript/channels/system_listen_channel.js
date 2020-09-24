@@ -20,7 +20,9 @@ import CableReady from 'cable_ready';
 function registerSystemListenChannel() {
   return createChannel('SystemListenChannel', {
     received(data) {
+      console.log('SystemListenChannel')
       console.log(data)
+      console.log('----------------------------------')
       if(data.cableReady) CableReady.perform(data.operations)
     }
   })

@@ -1,4 +1,4 @@
-div[id="task_#{task.id}" data-clannel-name=channel_name data-session-id=session_name]
+div[id=dom_id(task)]
   .d-flex.border-bottom.p-3.text-capitalize
     .flex-fill.flex6
       = task.description
@@ -11,11 +11,18 @@ div[id="task_#{task.id}" data-clannel-name=channel_name data-session-id=session_
         = priority_text(task, false)
     .flex-fill.flex15
       - if task.process?
-        a.btn.btn-sm.w100[aria-hidden="true" class=btn_color(task) href='javascript:void(0)' data={ reflex: 'click->TasksReflex#done', id: task.id, c: channel_name }]
+        / a.btn.btn-sm.w100[aria-hidden="true" class=btn_color(task) href='javascript:void(0)' data={ reflex: 'click->TasksReflex#done_task', id: task.id }]
+        /   = action_text(task)
+        = link_to task_done_path(task), class: "btn btn-sm w100 #{btn_color(task)}", aria: { hidden: "true" }, data: { confirm: t('confirm.done') } do
           = action_text(task)
+        / a.btn.btn-sm.w100[aria-hidden="true" class=btn_color(task) href='javascript:void(0)' data={ reflex: 'click->TasksReflex#done_task', id: task.id }]
+        /   = action_text(task)
       - if task.openning?
-        a.btn.btn-sm.w100[aria-hidden="true" class=btn_color(task) href='javascript:void(0)' data={ reflex: 'click->TasksReflex#start', id: task.id, c: channel_name }]
+        a.btn.btn-sm.w100[aria-hidden="true" class=btn_color(task) href='javascript:void(0)' data={ reflex: 'click->TasksReflex#start_task', id: task.id }]
           = action_text(task)
-      button.close[type="button" aria-label="Close" method=:delete data={ confirm: t('confirm.logout')}]
+
+      = link_to task_path(task), class: "close", method: :delete, type: :button, aria: { label: "Close" }, data: { confirm: t('confirm.delete_task') } do
         span[aria-hidden="true"] &times;
+      / button.close[type="button" aria-label="Close" method=:delete data={ confirm: t('confirm.delete_task')}]
+      /   span[aria-hidden="true"] &times;
       

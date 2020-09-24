@@ -4,4 +4,12 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+
+  resources :tasks, only: [:destroy] do 
+    get :done
+    get :start
+    collection do
+      put :hide_closed_task
+    end
+  end
 end

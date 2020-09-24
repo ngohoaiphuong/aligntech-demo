@@ -6,6 +6,8 @@ en:
     yes: Yes
     no: No
     logout: Do you really want to logout?
+    done: Are you sure do want this task?
+    delete_task: Are you sure delete this task?
 
 vi:
   confirm:
@@ -15,3 +17,5 @@ vi:
     yes: Đồng ý
     no: Từ chối
     logout:  Bạn có chắc muốn đăng xuất?
+    done: Bạn có chắc là hoàn thành công việc này?
+    delete_task: Bạn có chắc xoá công việc này?

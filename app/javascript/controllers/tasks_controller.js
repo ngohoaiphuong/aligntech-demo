@@ -34,10 +34,4 @@ export default class extends ApplicationController {
   //   console.error('updateError', error);
   //   element.innerText = 'Update Failed!'
   // }
-  beforeReflex(anchorElement) {
-    const { reflex } = anchorElement.dataset
-    console.log('---------------before----------------')
-    console.log(reflex)
-    console.log('-------------------------------------')
-  }  
 }

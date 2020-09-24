@@ -11,19 +11,24 @@ import '../stylesheets/application'
 import I18n from 'shared/locale.js.erb'
 import '../customs/sweetAlertConfirm'
 import { NoticeMessage } from '../shared/notice_message'
-import SystemListen from '../shared/system_listen';
+import SystemListen from '../shared/channels/system_listen';
 
 import consumer from "../channels/consumer"
+import UserTask from '../shared/channels/user_task';
 
 window.notice = new NoticeMessage()
 
 $(document).on('turbolinks:load', function () {
   consumer.subscriptions.subscriptions.forEach(
     (subscription) => {
-      consumer.subscriptions.remove(subscription)
+      console.log(JSON.parse(subscription.identifier))
+      if (JSON.parse(subscription.identifier).channel == 'TaskChannel') {
+        consumer.subscriptions.remove(subscription)
+      }
     }
   )
   
   $.sweetAlertConfirm.init(I18n.t('confirm.confirmation_title'))
-  const systemListen = SystemListen.get()  
+  SystemListen.get()  
+  UserTask.get()  
 })

@@ -1,37 +1,54 @@
 import ApplicationController from './application_controller'
+import { alertWarning } from 'shared/alert_service'
+import I18n from 'shared/locale.js.erb'
+import Cookies from 'js-cookie';
 
 /* This is the custom StimulusReflex controller for TasksReflex.
  * Learn more at: https://docs.stimulusreflex.com
  */
 export default class extends ApplicationController {
-  /* Reflex specific lifecycle methods.
-   * Use methods similar to this example to handle lifecycle concerns for a specific Reflex method.
-   * Using the lifecycle is optional, so feel free to delete these stubs if you don't need them.
-   *
-   * Example:
-   *
-   *   <a href="#" data-reflex="TasksReflex#example">Example</a>
-   *
-   * Arguments:
-   *
-   *   element - the element that triggered the reflex
-   *             may be different than the Stimulus controller's this.element
-   *
-   *   reflex - the name of the reflex e.g. "TasksReflex#example"
-   *
-   *   error - error message from the server
-   */
+  done(event) {
+    event.preventDefault()
+    const el = event.currentTarget
+    const id = el.getAttribute("data-id")
+    alertWarning(
+      I18n.t('confirm.confirmation_title'),
+      I18n.t('confirm.done'),
+      (result) => {
+        if(result.isConfirmed) {
+          this.stimulate("TasksReflex#done", id)
+        }
+      }
+    )
+  }
 
-  // beforeUpdate(element, reflex) {
-  //  element.innerText = 'Updating...'
-  // }
+  start(event) {
+    event.preventDefault()
+    const el = event.currentTarget
+    const id = el.getAttribute("data-id")
+    alertWarning(
+      I18n.t('confirm.confirmation_title'),
+      I18n.t('confirm.start'),
+      (result) => {
+        if(result.isConfirmed) {
+          this.stimulate("TasksReflex#start", id)
+        }
+      }
+    )
+  }
 
-  // updateSuccess(element, reflex) {
-  //   element.innerText = 'Updated Successfully.'
-  // }
-
-  // updateError(element, reflex, error) {
-  //   console.error('updateError', error);
-  //   element.innerText = 'Update Failed!'
-  // }
+  remove(event) {
+    event.preventDefault()
+    const el = event.currentTarget
+    const id = el.getAttribute("data-id")
+    alertWarning(
+      I18n.t('confirm.confirmation_title'),
+      I18n.t('confirm.delete_task'),
+      (result) => {
+        if(result.isConfirmed) {
+          this.stimulate("TasksReflex#remove", id, Cookies.get('hide_closed_task'))
+        }
+      }
+    )
+  }
 }

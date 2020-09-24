@@ -10,9 +10,6 @@ function registerTaskChannel() {
     },
     {
       received(data) {
-        console.log("TaskChannel");
-        console.log(data);
-        console.log("----------------------------------");
         if (data.cableReady) CableReady.perform(data.operations);
       },
     }

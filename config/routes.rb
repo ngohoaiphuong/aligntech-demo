@@ -4,9 +4,4 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-
-  resources :tasks, only: [:destroy] do 
-    get :done
-    get :start
-  end
 end

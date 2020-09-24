@@ -7,6 +7,14 @@ import Cookies from 'js-cookie';
  * Learn more at: https://docs.stimulusreflex.com
  */
 export default class extends ApplicationController {
+  static targets = ['important', 'urgent', 'description', 'hide_closed_task']
+
+  initialize() {
+    this.importantTarget.checked = false
+    this.urgentTarget.checked = false
+    this.hide_closed_taskTarget.checked = Cookies.get('hide_closed_task')
+  }
+
   done(event) {
     event.preventDefault()
     const el = event.currentTarget
@@ -50,5 +58,18 @@ export default class extends ApplicationController {
         }
       }
     )
+  }
+
+  add(event) {
+    event.preventDefault()
+    console.log(this.hide_closed_taskTarget.checked)
+    this.stimulate("TasksReflex#add", this.descriptionTarget.value, this.importantTarget.checked, this.urgentTarget.checked, this.hide_closed_taskTarget.checked)
+  }
+
+  onkeypress(event) {
+    event.preventDefault()
+    if (event.keyCode == 13) {
+      this.add(event)
+    }
   }
 }

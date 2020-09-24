@@ -39,6 +39,10 @@ body {
   width: 100px !important;
 }
 
+.w150 {
+  width: 150px !important;
+}
+
 .flex6 {
   flex: 60% !important;
 }
@@ -53,4 +57,40 @@ body {
 
 .cursor-pointer {
   cursor: pointer;
+}
+
+.h300 {
+  min-height: 300px;
+  max-height: 300px;
+}
+
+.app-input-style {
+  border: none;
+  border-bottom: 1px solid #ced4da;
+  border-radius: 0;
+  outline: none;
+  &:focus {
+    box-shadow: none;
+  }  
+}
+
+.enable-scroll {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 1px grey; 
+  border-radius: 0px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #fd7e14; 
+  border-radius: 0px;
 }

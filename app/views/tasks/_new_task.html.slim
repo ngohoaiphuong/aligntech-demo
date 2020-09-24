@@ -1,0 +1,22 @@
+.d-flex.text-capitalize
+  .flex-fill.flex6
+    .p-2
+      .form-group
+        label[for='new-task-input']
+          = t('tasks.add.title')
+        input#new-task-input.form-control.app-input-style.text-capitalize[placeholder= t('tasks.add.title') maxlength='40' data= { target:'tasks.description', action: 'keyup->tasks#onkeypress' }]
+        small.form-text.text-muted
+          = t('tasks.add.description')
+        small.form-text.text-danger
+          #error-description
+        
+  .flex-fill.flex15.mt-5
+    = link_to 'javascript:void(0)', class: "btn btn-sm btn-primary w150", aria: { hidden: "true" }, data: { action: 'click->tasks#add' } do
+      = t('tasks.add.button')
+  .flex-fill.flex35.p-4.mt-2
+    .form-check
+      = check_box_tag t('tasks.important'), '1', false, class: 'form-check-input cursor-pointer', data: { target: "tasks.important" }
+      = label_tag t('tasks.important'), t('tasks.important'), class: 'form-check-label cursor-pointer', value: '0'
+    .form-check
+      = check_box_tag t('tasks.urgent'), '1', false, class: 'form-check-input cursor-pointer', data: { target: "tasks.urgent" }
+      = label_tag t('tasks.urgent'), t('tasks.urgent'), class: 'form-check-label cursor-pointer', value: '0'

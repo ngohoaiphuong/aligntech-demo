@@ -15,13 +15,13 @@ import SystemListen from '../shared/channels/system_listen';
 
 import consumer from "../channels/consumer"
 import UserTask from '../shared/channels/user_task';
+import { hideAlert } from 'shared/alert_service'
 
 window.notice = new NoticeMessage()
 
 $(document).on('turbolinks:load', function () {
   consumer.subscriptions.subscriptions.forEach(
     (subscription) => {
-      console.log(JSON.parse(subscription.identifier))
       if (JSON.parse(subscription.identifier).channel == 'TaskChannel') {
         consumer.subscriptions.remove(subscription)
       }
@@ -30,5 +30,6 @@ $(document).on('turbolinks:load', function () {
   
   $.sweetAlertConfirm.init(I18n.t('confirm.confirmation_title'))
   SystemListen.get()  
-  UserTask.get()  
+  UserTask.get()
+  hideAlert()
 })
